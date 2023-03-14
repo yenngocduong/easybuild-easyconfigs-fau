@@ -1,0 +1,28 @@
+name = 'libxml2'
+version = '2.9.10'
+
+homepage = 'http://xmlsoft.org/'
+
+description = """
+ Libxml2 is the XML C parser and toolchain developed for the Gnome project
+ (but usable outside of the Gnome platform).
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '12.2.0'}
+toolchainopts = {'pic': True}
+
+source_urls = [
+    'http://xmlsoft.org/sources/',
+    'http://xmlsoft.org/sources/old/'
+]
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f']
+
+builddependencies = [('binutils', '2.39')]
+buildopts = 'CFLAGS="-O2 -march=icelake-server" CXXFLAGS="-O2 -march=icelake-server" FFLAGS="-O2 -march=icelakeicelake-server"'
+dependencies = [
+    ('XZ', '5.2.7'),
+    ('zlib', '1.2.12'),
+]
+
+moduleclass = 'lib'

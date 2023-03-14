@@ -1,0 +1,25 @@
+name = 'MPICH'
+version = '4.1.1'
+
+homepage = 'https://www.mpich.org/'
+description = """MPICH is a high-performance and widely portable implementation 
+of the Message Passing Interface (MPI) standard (MPI-1, MPI-2 and MPI-3)."""
+
+toolchain = {'name': 'GCC', 'version': '12.2.0'}
+
+#source_urls = ['https://www.mpich.org/static/downloads/%(version)s']
+#sources = [SOURCELOWER_TAR_GZ]
+#checksums = ['5c19bea8b84e8d74cca5f047e82b147ff3fba096144270e3911ad623d6c587bf']
+
+source_urls = ['https://www.mpich.org/static/downloads/%(version)s']
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['ee30471b35ef87f4c88f871a5e2ad3811cd9c4df32fd4f138443072ff4284ca2']
+
+configopts = 'FFLAGS="-w -fallow-argument-mismatch -O2" --with-devices=ch4:ucx --with-ucx=$EBROOTUCX'
+buildopts = 'CFLAGS="-O2 -march=icelake-server" CXXFLAGS="-O2 -march=icelake-server" FFLAGS="-O2 -march=icelake-server"'
+
+dependencies = [
+    ('UCX', '1.13.1'),
+]
+
+moduleclass = 'mpi'

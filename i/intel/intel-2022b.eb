@@ -1,0 +1,22 @@
+easyblock = 'Toolchain'
+
+name = 'intel'
+version = '2022b'
+
+homepage = 'https://easybuild.readthedocs.io/en/master/Common-toolchains.html#intel-toolchain'
+description = "Compiler toolchain including Intel compilers, Intel MPI and Intel Math Kernel Library (MKL)."
+
+toolchain = SYSTEM
+
+local_comp_ver = '2022.2.1'
+local_gccver = '12.2.0'
+dependencies = [
+    ('GCCcore', local_gccver),
+    ('binutils', '2.39', '', ('GCCcore', '12.2.0')),
+    ('intel-compilers', '2023.0.0'),
+    ('impi', '2021.8.0', '', ('intel-compilers', '2023.0.0')),
+    ('imkl', '2023.0.0', '', SYSTEM),
+    ('imkl-FFTW', '2023.0.0', '', ('iimpi', version)),
+]
+
+moduleclass = 'toolchain'
